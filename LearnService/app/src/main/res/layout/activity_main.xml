@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="服务已停止"
         android:id="@+id/btnStatus"
+        android:textColor="#ffffff"
         android:background="#ff0000" />
 
     <Button

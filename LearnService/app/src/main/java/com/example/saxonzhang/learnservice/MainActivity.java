@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
 
+    private Button btnStatus;
     private ArrayList<Integer> bottons;
     private Intent myServiceIntent;
     private Handler handler;
@@ -30,11 +31,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             if (status) {
-                ((Button)findViewById(R.id.btnStatus)).setBackgroundColor(Color.GREEN);
-                ((Button)findViewById(R.id.btnStatus)).setText("服务正在运行...");
+                btnStatus.setTextColor(Color.BLACK);
+                btnStatus.setBackgroundColor(Color.GREEN);
+                btnStatus.setText("服务正在运行...");
             } else {
-                ((Button)findViewById(R.id.btnStatus)).setBackgroundColor(Color.RED);
-                ((Button)findViewById(R.id.btnStatus)).setText("服务已停止");
+                btnStatus.setTextColor(Color.WHITE);
+                btnStatus.setBackgroundColor(Color.RED);
+                btnStatus.setText("服务已停止");
             }
         }
     };
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnStatus = (Button)findViewById(R.id.btnStatus);
 
         if (myServiceIntent == null) {
             myServiceIntent = new Intent(this, MyService.class);
